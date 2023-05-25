@@ -52,7 +52,7 @@ export const FamilyTree = () => {
     <div style={{ height: "100vh" }}>
       {/* <TreeForm onSubmit={addNode} /> */}
       <Tree
-        zoom="0.6"
+        zoom="0.1"
         data={treeData}
         orientation="vertical"
         separation={{ siblings: 4, nonSiblings: 3 }}
@@ -63,8 +63,8 @@ export const FamilyTree = () => {
         enableLegacyTransitions={true}
         transitionDuration={500}
         transitionEasing="ease"
-        // draggable={false}
-        depthFactor={250}
+        draggable={false}
+        depthFactor={290}
       />
     </div>
   );
