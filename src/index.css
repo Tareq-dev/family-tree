@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap');
+body {
+  margin: 0;
+  font-family: "Outfit",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+}
+
+.node-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.node-name {
+  font-size: 14px;
+}
+
+
+
+.rd3t-link {
+  stroke:aliceblue!important;
+  stroke-width: 2px;
+  opacity: 0.8;
+  /* Add more styles as needed */
+}
+
+
+.neon-shadow {
+  box-shadow: 0 0 10px rgba(161, 255, 10, 0.7),
+              0 0 20px rgba(16, 255, 143, 0.5),
+              0 0 30px rgba(92, 255, 17, 0.3);
+ 
+}
+ 
+
