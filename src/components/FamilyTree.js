@@ -2,18 +2,26 @@ import React from "react";
 import { Tree } from "react-d3-tree";
 import { treeData } from "./data";
 
-console.log(treeData.map((m) => m.child));
-
 export const FamilyTree = () => {
-  const nodeSize = { x: 300, y: 200 };
+  const isMobile = window.innerWidth <= 768;
 
+  const nodeSize = isMobile ? { x: 150, y: 100 } : { x: 300, y: 200 };
+
+  // const foreignObjectProps = {
+  //   width: nodeSize.x,
+  //   height: nodeSize.y,
+  //   x: -150,
+  //   y: 25,
+  // };
   const foreignObjectProps = {
     width: nodeSize.x,
     height: nodeSize.y,
-    x: -150,
-    y: 25,
+    x: isMobile ? -75 : -150,
+    y: isMobile ? 15 : 25,
   };
+  const translate = isMobile ? { x: 180, y: 150 } : { x: 650, y: 150 };
 
+  console.log(translate);
   const renderForeignObjectNode = ({
     nodeDatum,
     toggleNode,
@@ -50,21 +58,20 @@ export const FamilyTree = () => {
 
   return (
     <div style={{ height: "100vh" }}>
-      {/* <TreeForm onSubmit={addNode} /> */}
       <Tree
-        zoom="0.1"
+        zoom="0.4"
         data={treeData}
         orientation="vertical"
-        separation={{ siblings: 4, nonSiblings: 3 }}
-        translate={{ x: 650, y: 150 }}
+        separation={{ siblings: isMobile ? 1.5 : 4, nonSiblings: 3 }}
+        translate={translate}
         renderCustomNodeElement={(rd3tProps) =>
           renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
         }
         enableLegacyTransitions={true}
-        transitionDuration={500}
+        transitionDuration={800}
         transitionEasing="ease"
-        draggable={false}
-        depthFactor={290}
+        draggable={isMobile ? true : false}
+        depthFactor={isMobile ? 200 : 290}
       />
     </div>
   );
