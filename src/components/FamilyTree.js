@@ -21,7 +21,6 @@ export const FamilyTree = () => {
   };
   const translate = isMobile ? { x: 180, y: 150 } : { x: 650, y: 150 };
 
-  console.log(translate);
   const renderForeignObjectNode = ({
     nodeDatum,
     toggleNode,
@@ -55,6 +54,26 @@ export const FamilyTree = () => {
       </foreignObject>
     </g>
   );
+
+  function getAllNames(data) {
+    const names = [];
+
+    function traverseTree(nodes) {
+      nodes.forEach((node) => {
+        names.push(node.name);
+        if (node.children) {
+          traverseTree(node.children);
+        }
+      });
+    }
+
+    traverseTree(data);
+
+    return names;
+  }
+
+  const allNames = getAllNames(treeData);
+  console.log(allNames);
 
   return (
     <div style={{ height: "100vh" }}>
